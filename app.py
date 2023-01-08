@@ -6,16 +6,16 @@ model_nb = joblib.load('Project')
 vect = joblib.load('vect.pkl')
 
 def main():
-  st.title('Phishing URL Prediction') #creates a title in web app
-  ip = st.text_input('Enter URL:') #creates a text box in web app
+  st.title('Ecom_Fraud_Detection') #creates a title in web app
+  ip = st.text_input('Enter Input') #creates a text box in web app
   if st.button('Predict'):
     data=[ip]
     cv=vect.transform(data).toarray()
     prediction=model_nb.predict(cv)
     result=prediction[0]
-    if result=='Good':
-      st.success("GOOD URL")
+    if result=='TRUE':
+      st.success("TRUE")
     else:
-      st.error("Phishing URL")
+      st.error("FALSE")
    
 main()  
